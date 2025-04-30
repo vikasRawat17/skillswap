@@ -1,0 +1,254 @@
+.vertical-navbar ~ * {
+  margin-left: 80px;
+  width: calc(100% - 80px);
+  transition: margin-left 0.3s cubic-bezier(0.34, 1.56, 0.64, 1),
+    width 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  will-change: margin-left, width;
+  transition: margin-left 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+    width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+body:has(.vertical-navbar:hover) .vertical-navbar ~ * {
+  margin-left: 240px;
+  width: calc(100% - 240px);
+}
+
+#root > div:not(.vertical-navbar) {
+  margin-left: 80px;
+  width: calc(100% - 80px);
+  transition: margin-left 0.3s cubic-bezier(0.34, 1.56, 0.64, 1),
+    width 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+body:has(.vertical-navbar:hover) #root > div:not(.vertical-navbar) {
+  margin-left: 240px;
+  width: calc(100% - 240px);
+}
+
+body,
+#root,
+.App {
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(135deg, #1e293b, #0f172a);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+.vertical-navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 80px;
+  background: #ffffff;
+  border-right: 1px solid #e0e0e0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Distributes logo, links, and user icons */
+  align-items: center;
+  padding: 1rem 0;
+  box-shadow: 2px 0 12px rgba(0, 0, 0, 0.05);
+  transition: width 0.3s ease;
+  z-index: 1000;
+}
+
+.vertical-navbar:hover {
+  width: 240px;
+}
+
+.navbar-logo {
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.logo-image {
+  margin-top: 20px;
+  width: 65px;
+  transition: all 0.3s ease;
+}
+
+.vertical-navbar:hover .logo-image {
+  width: 100px;
+}
+
+.navbar-links {
+  flex-grow: 1;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 0 0.5rem;
+  margin-bottom: 20px;
+}
+
+.nav-link {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: #333;
+  padding: 0.8rem 1rem;
+  border-radius: 12px;
+  font-weight: 500;
+  font-size: 0.95rem;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.nav-link:hover {
+  background: rgba(66, 99, 235, 0.08);
+  box-shadow: 0px 2px 8px rgba(66, 99, 235, 0.2);
+  transform: translateX(5px);
+}
+
+.nav-link.active {
+  background: linear-gradient(90deg, #4263eb, #5c7cfa);
+  color: #fff;
+  box-shadow: 0px 4px 12px rgba(66, 99, 235, 0.5);
+}
+
+.nav-icon {
+  font-size: 1.5rem;
+  margin-right: 1rem;
+  transition: transform 0.3s ease;
+  width: 24px;
+  text-align: center;
+}
+
+.nav-link:hover .nav-icon {
+  transform: scale(1.2);
+}
+
+.nav-text {
+  opacity: 0;
+  transform: translateX(-10px);
+  transition: all 0.4s ease;
+  white-space: nowrap;
+}
+
+.vertical-navbar:hover .nav-text {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.navbar-user {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  padding-bottom: 1rem;
+  width: 100%;
+}
+
+.user-icon,
+.settings-icon {
+  width: 48px;
+  height: 48px;
+  background: #f0f0f5;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  position: relative;
+  overflow: visible;
+  transition: all 0.3s ease;
+}
+
+.user-icon:hover,
+.settings-icon:hover {
+  background: #4263eb22;
+  transform: translateY(-3px);
+}
+
+.icon-image {
+  width: 24px;
+  height: 24px;
+  object-fit: cover;
+}
+
+/* Logout specific styling */
+.logout-icon {
+  width: 28px;
+  height: 28px;
+}
+
+.logout-icon:hover {
+  transform: rotate(10deg) scale(1.1);
+}
+
+/* Animation */
+@keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.vertical-navbar {
+  animation: fadeInLeft 0.6s ease-out;
+}
+
+.nav-link {
+  animation: fadeInLeft 0.5s ease-out forwards;
+  opacity: 0;
+}
+
+.nav-link:nth-child(1) {
+  animation-delay: 0.1s;
+}
+.nav-link:nth-child(2) {
+  animation-delay: 0.2s;
+}
+.nav-link:nth-child(3) {
+  animation-delay: 0.3s;
+}
+.nav-link:nth-child(4) {
+  animation-delay: 0.4s;
+}
+.nav-link:nth-child(5) {
+  animation-delay: 0.5s;
+}
+
+/* Dark mode */
+@media (prefers-color-scheme: dark) {
+  .vertical-navbar {
+    background: #1e1e2f;
+    border-right: 1px solid #333;
+  }
+
+  .nav-link {
+    color: #ddd;
+  }
+
+  .nav-link.active {
+    background: linear-gradient(90deg, #5c7cfa, #4263eb);
+  }
+
+  .navbar-user {
+    border-top: 1px solid #333;
+  }
+
+  .user-icon,
+  .settings-icon {
+    background: #2e2e42;
+  }
+}
+
+/* Responsive height */
+@media (max-height: 600px) {
+  .navbar-logo {
+    margin-bottom: 1rem;
+  }
+
+  .nav-link {
+    padding: 0.5rem 0.8rem;
+  }
+}
