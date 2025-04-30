@@ -180,7 +180,7 @@
     var(--primary-color),
     var(--secondary-color)
   );
-  color: white;
+  /* color: white; */
   border: none;
   padding: 0.9rem;
   font-size: 1rem;
@@ -200,6 +200,7 @@
 
 .auth-button.loading {
   cursor: not-allowed;
+  color: black !important;
   opacity: 0.8;
 }
 

@@ -361,8 +361,7 @@ const LocationSection = ({ formData, setFormData }) => {
       }
 
       const script = document.createElement("script");
-      script.src =
-        "https://maps.googleapis.com/maps/api/js?key=AIzaSyCr5wZLwh6EZD-cIHTCx4nbinlV5uGb7gY&libraries=places";
+      script.src = `https://maps.googleapis.com/maps/api/js?key=${process.env.API_KEY}&libraries=places`
       script.async = true;
       script.defer = true;
       script.id = "google-maps";
